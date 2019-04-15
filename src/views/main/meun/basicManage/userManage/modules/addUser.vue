@@ -3,44 +3,52 @@
   <el-dialog v-dialog-drag :visible.sync="visible" :close-on-click-modal="false" :before-close="closeDialog" :title="dialogTitle" width="600px">
     <el-form ref="form" :rules="form_rules" :model="form" label-position="right" label-width="95px">
       <el-form-item class="yz-block" label="用户账号：" prop="username">
-        <el-input v-if="dialogType === 'add'" v-model="form.username" class="single-border" type="text"/>
+        <el-input v-if="dialogType === 'add'" v-model="form.username" class="single-border" type="text" />
         <span v-else style="padding: 0 10px">{{ form.username }}</span>
       </el-form-item>
       <el-form-item class="yz-block" label="职工号：" prop="staffNumber">
-        <el-input v-model="form.staffNumber" class="single-border" type="text"/>
+        <el-input v-model="form.staffNumber" class="single-border" type="text" />
       </el-form-item>
       <el-form-item v-if="dialogType === 'add'" class="yz-block" label="密码：" prop="password">
-        <el-input v-model="form.password" type="password" class="single-border" auto-complete="off"/>
+        <el-input v-model="form.password" type="password" class="single-border" auto-complete="off" />
       </el-form-item>
       <el-form-item v-if="dialogType === 'add'" class="yz-block" label="确认密码：" prop="password2">
-        <el-input v-model="form.password2" type="password" class="single-border" auto-complete="off"/>
+        <el-input v-model="form.password2" type="password" class="single-border" auto-complete="off" />
       </el-form-item>
       <el-form-item class="yz-inline" label="真实姓名：" prop="realName">
-        <el-input v-model="form.realName" class="single-border" type="text"/>
+        <el-input v-model="form.realName" class="single-border" type="text" />
       </el-form-item>
       <el-form-item class="yz-inline" label="邮箱：" prop="email">
-        <el-input v-model="form.email" class="single-border" type="text"/>
+        <el-input v-model="form.email" class="single-border" type="text" />
       </el-form-item>
       <el-form-item class="yz-inline" label="状态：" prop="status">
         <el-radio-group v-model="form.status">
-          <el-radio v-for="item in statusOptions" :key="item.value" :label="item.value">{{ item.label }}</el-radio>
+          <el-radio v-for="item in statusOptions" :key="item.value" :label="item.value">
+            {{ item.label }}
+          </el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item class="yz-inline" label="性别：" prop="sex">
         <el-radio-group v-model="form.sex">
-          <el-radio v-for="item in genderOption" :key="item.value" :label="item.value">{{ item.label }}</el-radio>
+          <el-radio v-for="item in genderOption" :key="item.value" :label="item.value">
+            {{ item.label }}
+          </el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item class="yz-block" label="地址：" prop="address">
-        <el-input v-model="form.address" class="single-border" type="textarea" rows="3"/>
+        <el-input v-model="form.address" class="single-border" type="textarea" rows="3" />
       </el-form-item>
       <el-form-item class="yz-block" label="描述：" prop="description">
-        <el-input v-model="form.description" class="single-border" type="textarea" rows="3"/>
+        <el-input v-model="form.description" class="single-border" type="textarea" rows="3" />
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="closeDialog()">取消</el-button>
-      <el-button type="primary" @click="toSubmit">确定</el-button>
+      <el-button @click="closeDialog()">
+        取消
+      </el-button>
+      <el-button type="primary" @click="toSubmit">
+        确定
+      </el-button>
     </div>
   </el-dialog>
 </template>

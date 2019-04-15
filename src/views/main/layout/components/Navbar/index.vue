@@ -1,26 +1,26 @@
 <template>
   <el-menu v-cloak class="navbar" mode="horizontal">
-    <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
+    <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container" />
 
-    <breadcrumb class="breadcrumb-container"/>
+    <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
       <!-- <error-log class="errLog-container right-menu-item"/> -->
 
       <el-tooltip :content="$t('navbar.screenfull')" effect="dark" placement="bottom">
-        <screenfull class="screenfull right-menu-item"/>
+        <screenfull class="screenfull right-menu-item" />
       </el-tooltip>
 
-      <lang-select class="international right-menu-item"/>
+      <lang-select class="international right-menu-item" />
 
       <el-tooltip :content="$t('navbar.theme')" effect="dark" placement="bottom">
-        <theme-picker class="theme-switch right-menu-item"/>
+        <theme-picker class="theme-switch right-menu-item" />
       </el-tooltip>
 
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
           <img :src="user.avatar" class="user-avatar">
-          <i class="el-icon-caret-bottom"/>
+          <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/">

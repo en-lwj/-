@@ -1,31 +1,36 @@
 <template>
   <el-dialog v-dialog-drag :visible.sync="visible" :close-on-click-modal="false" :title="title" :before-close="closeDialog" width="600px">
-    <el-form v-loading="dialogLoading" ref="form" :model="form" :rules="form_rules" class="form" element-loading-text="模版加载中..." label-width="100px">
+    <el-form ref="form" v-loading="dialogLoading" :model="form" :rules="form_rules" class="form" element-loading-text="模版加载中..." label-width="100px">
       <el-form-item class="yz-block" label="缩略图：" prop="thumbnail">
-        <yz-upload-avatar :path.sync="avatar.imageUrl" :upload-url="avatar.uploadUrl" :on-success="changeAvatarSuccess" file-size="20MB" width="140px" height="140px" style="margin-left: 0;"/>
+        <yz-upload-avatar :path.sync="avatar.imageUrl" :upload-url="avatar.uploadUrl" :on-success="changeAvatarSuccess" file-size="20MB" width="140px" height="140px" style="margin-left: 0;" />
       </el-form-item>
       <el-form-item class="yz-block" label="父栏目：" prop="name">
         <span style="padding: 0 15px;">{{ parentData.name }}</span>
       </el-form-item>
       <el-form-item class="yz-block" label="栏目名称：" prop="name">
-        <el-input v-model="form.name" class="single-border"/>
+        <el-input v-model="form.name" class="single-border" />
       </el-form-item>
       <el-form-item class="yz-block" label="栏目模版：" prop="newsTemplateId">
         <el-select v-model="form.newsTemplateId" placeholder="请选择" class="single-border">
-          <el-option label="无" value=""/>
+          <el-option label="无" value="" />
           <el-option
             v-for="item in newsTemplateAll"
             :key="item.id"
             :label="item.name"
-            :value="item.id"/>
+            :value="item.id"
+          />
         </el-select>
       </el-form-item>
       <el-form-item class="yz-block" label="栏目描述：" prop="code">
         <el-input v-model="form.description" class="single-border" type="textarea" rows="3" />
       </el-form-item>
       <el-form-item class="yz-block">
-        <el-button type="default" size="small" @click="closeDialog()">取消</el-button>
-        <el-button type="primary" size="small" @click="toSubmit()">确定</el-button>
+        <el-button type="default" size="small" @click="closeDialog()">
+          取消
+        </el-button>
+        <el-button type="primary" size="small" @click="toSubmit()">
+          确定
+        </el-button>
       </el-form-item>
     </el-form>
   </el-dialog>

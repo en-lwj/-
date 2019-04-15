@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form ref="dynamicValidateForm" :model="form" :rules="rules" label-width="100px" class="demo-dynamic">
-      <el-form-item prop="fileList" label="文件列表" >
+      <el-form-item prop="fileList" label="文件列表">
         <el-upload
           ref="upload"
           :on-remove="handleRemove"
@@ -9,13 +9,20 @@
           :file-list="form.fileList"
           :auto-upload="false"
           class="upload-demo"
-          action="https://jsonplaceholder.typicode.com/posts">
-          <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-          <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+          action="https://jsonplaceholder.typicode.com/posts"
+        >
+          <el-button slot="trigger" size="small" type="primary">
+            选取文件
+          </el-button>
+          <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">
+            上传到服务器
+          </el-button>
         </el-upload>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('dynamicValidateForm')">提交</el-button>
+        <el-button type="primary" @click="submitForm('dynamicValidateForm')">
+          提交
+        </el-button>
       </el-form-item>
     </el-form>
   </div>

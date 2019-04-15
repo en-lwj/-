@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-ueditor-wrap v-model="msg" :config="myConfig" :destroy="false" @ready="ready"/>
+    <vue-ueditor-wrap v-model="msg" :config="myConfig" :destroy="false" @ready="ready" />
   </div>
 </template>
 

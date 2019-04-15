@@ -1,6 +1,5 @@
 <template>
   <div class="app-container">
-
     <!-- 角色配置 -->
     <div class="yz-panel">
       <div class="yz-panel-header">
@@ -8,7 +7,9 @@
           <span class="yz-panel-title">角色配置 - {{ campusInfo.name }}</span>
         </div>
         <el-row class="yz-panel-header-right">
-          <el-button class="filter-item" type="primary" icon="el-icon-plus" size="mini" @click="showAddDialog()">新增</el-button>
+          <el-button class="filter-item" type="primary" icon="el-icon-plus" size="mini" @click="showAddDialog()">
+            新增
+          </el-button>
         </el-row>
       </div>
       <div class="yz-panel-body">
@@ -16,8 +17,9 @@
           v-loading="listLoading"
           :max-height="tableMaxHeight"
           :data="list"
-          border>
-          <el-table-column :index="indexMethod" label="序号" align="center" type="index" width="65"/>
+          border
+        >
+          <el-table-column :index="indexMethod" label="序号" align="center" type="index" width="65" />
           <el-table-column label="角色名" min-width="100px" align="center">
             <template slot-scope="scope">
               <span>{{ scope.row.roleName }}</span>
@@ -35,9 +37,15 @@
           </el-table-column>
           <el-table-column label="操作" fixed="right" align="center" width="280" class-name="small-padding fixed-width">
             <template slot-scope="scope">
-              <el-button type="primary" size="mini" @click="showAssignPermissionDialog(scope.row)">角色赋权</el-button>
-              <el-button size="mini" type="warning" @click="showChangeDialog(scope.row)">修改</el-button>
-              <el-button size="mini" type="danger" @click="deleteRow(scope.$index, scope.row)">删除</el-button>
+              <el-button type="primary" size="mini" @click="showAssignPermissionDialog(scope.row)">
+                角色赋权
+              </el-button>
+              <el-button size="mini" type="warning" @click="showChangeDialog(scope.row)">
+                修改
+              </el-button>
+              <el-button size="mini" type="danger" @click="deleteRow(scope.$index, scope.row)">
+                删除
+              </el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -46,12 +54,12 @@
 
     <!-- 新增和修改角色弹窗 -->
     <div v-if="add_and_put_dialog">
-      <add-campus-role-dialog :visible.sync="add_and_put_dialog" :row.sync="select_row" :dialog-type="add_and_put_dialog_type" :tenant-id="listQuery.tenantId" @reload="getList"/>
+      <add-campus-role-dialog :visible.sync="add_and_put_dialog" :row.sync="select_row" :dialog-type="add_and_put_dialog_type" :tenant-id="listQuery.tenantId" @reload="getList" />
     </div>
 
     <!-- 分配权限弹窗 -->
     <div v-if="assign_permission_dialog">
-      <assign-permission-dialog :visible.sync="assign_permission_dialog" :row.sync="select_row" @reload="getList"/>
+      <assign-permission-dialog :visible.sync="assign_permission_dialog" :row.sync="select_row" @reload="getList" />
     </div>
   </div>
 </template>

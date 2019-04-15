@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-html="msg"/>
-    <vue-ueditor-wrap v-model="msg" :config="myConfig"/>
+    <div v-html="msg" />
+    <vue-ueditor-wrap v-model="msg" :config="myConfig" />
   </div>
 </template>
 

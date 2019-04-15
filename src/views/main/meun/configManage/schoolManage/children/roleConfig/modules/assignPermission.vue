@@ -8,7 +8,8 @@
         :default-expand-all="true"
         :expand-on-click-node="false"
         show-checkbox
-        node-key="id">
+        node-key="id"
+      >
         <span slot-scope="{ node, data }" class="custom-tree-node">
           <span>{{ data.permissionName }}</span>
           <span class="tree-leaf-state">{{ '[' + data.code + ']' }}</span>
@@ -16,8 +17,12 @@
       </el-tree>
     </div>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="closeDialog()">取消</el-button>
-      <el-button type="primary" @click="toSubmit()">确定</el-button>
+      <el-button @click="closeDialog()">
+        取消
+      </el-button>
+      <el-button type="primary" @click="toSubmit()">
+        确定
+      </el-button>
     </div>
   </el-dialog>
 </template>

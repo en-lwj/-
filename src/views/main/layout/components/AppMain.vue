@@ -1,23 +1,21 @@
 <template>
   <section class="app-main">
-    <el-row v-show="!$route.meta.noCache" class="app-main-contain" >
+    <el-row v-show="!$route.meta.noCache" class="app-main-contain">
       <transition name="fade-transform" mode="out-in">
         <keep-alive>
-          <router-view v-if="!$route.meta.noCache"/>
+          <router-view v-if="!$route.meta.noCache" />
         </keep-alive>
 
         <!-- <keep-alive :include="cachedViews">
           <router-view :key="key"/>
         </keep-alive> -->
-
       </transition>
     </el-row>
     <el-row v-show="$route.meta.noCache" class="app-main-contain">
       <transition name="fade-transform" mode="out-in">
-        <router-view v-if="$route.meta.noCache"/>
+        <router-view v-if="$route.meta.noCache" />
       </transition>
     </el-row>
-
   </section>
 </template>
 

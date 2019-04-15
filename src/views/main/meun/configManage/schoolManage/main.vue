@@ -4,7 +4,7 @@
       <div class="filter-container-header">
         <el-button class="filter-item search-list-btn" size="small" @click="searchListClose = !searchListClose">
           <span>筛选条件</span>
-          <i :class="searchListClose ? 'el-icon-caret-top' : 'el-icon-caret-bottom'"/>
+          <i :class="searchListClose ? 'el-icon-caret-top' : 'el-icon-caret-bottom'" />
         </el-button>
       </div>
       <div :class="searchListClose ? 'close' : ''" class="filter-container-body">
@@ -12,11 +12,13 @@
           <!-- 条件筛选 -->
           <el-form ref="form" :model="listQuery" label-width="100px" size="mini">
             <el-form-item class="yz-inline" label="学校名称：" prop="code">
-              <el-input v-model="listQuery.name" class="single-border" type="text"/>
+              <el-input v-model="listQuery.name" class="single-border" type="text" />
             </el-form-item>
           </el-form>
           <el-row class="yz-center">
-            <el-button v-waves class="filter-item" size="small" type="primary" @click="getList">确认</el-button>
+            <el-button v-waves class="filter-item" size="small" type="primary" @click="getList">
+              确认
+            </el-button>
           </el-row>
         </el-row>
       </div>
@@ -29,12 +31,18 @@
           <span class="yz-panel-title">学校列表</span>
         </div>
         <el-row class="yz-panel-header-right">
-          <el-button class="filter-item" type="primary" size="mini" @click="goSchoolPermission()">权限配置</el-button>
-          <el-button class="filter-item" type="primary" icon="el-icon-plus" size="mini" @click="showAddDialog">新增</el-button>
+          <el-button class="filter-item" type="primary" size="mini" @click="goSchoolPermission()">
+            权限配置
+          </el-button>
+          <el-button class="filter-item" type="primary" icon="el-icon-plus" size="mini" @click="showAddDialog">
+            新增
+          </el-button>
         </el-row>
       </div>
-      <div v-loading="listLoading" v-if="list.length === 0" class="yz-panel-body" style="padding: 30px;text-align: center;color: #888;">暂无学校</div>
-      <div v-loading="listLoading" v-else class="yz-panel-body panel-container">
+      <div v-if="list.length === 0" v-loading="listLoading" class="yz-panel-body" style="padding: 30px;text-align: center;color: #888;">
+        暂无学校
+      </div>
+      <div v-else v-loading="listLoading" class="yz-panel-body panel-container">
         <div class="panel">
           <el-row v-for="(item, index) in list" :key="item.id" class="panel-item">
             <div class="img-container">
@@ -50,23 +58,28 @@
               <div class="panel-main-content" v-html="item.description.replace(/(\r\n)|(\n)/g, '<br>')" />
             </div>
             <div class="panel-tools">
-              <el-button size="mini" type="primary" @click="goRoleConfig(item)">角色配置</el-button>
-              <el-button size="mini" type="warning" @click="showChangeDialog(item)">修改</el-button>
-              <el-button size="mini" type="danger" @click="deleteRow(index, item)">删除</el-button>
+              <el-button size="mini" type="primary" @click="goRoleConfig(item)">
+                角色配置
+              </el-button>
+              <el-button size="mini" type="warning" @click="showChangeDialog(item)">
+                修改
+              </el-button>
+              <el-button size="mini" type="danger" @click="deleteRow(index, item)">
+                删除
+              </el-button>
             </div>
           </el-row>
         </div>
         <!-- 分页 -->
         <div class="pagination-container">
-          <el-pagination :current-page="pager.pageNum" :page-sizes="[10,20,30, 50]" :page-size="pager.pageSize" :total="total" background layout="total, sizes, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange"/>
+          <el-pagination :current-page="pager.pageNum" :page-sizes="[10,20,30, 50]" :page-size="pager.pageSize" :total="total" background layout="total, sizes, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
         </div>
       </div>
     </div>
     <!-- 新增和修改弹窗 -->
     <div v-if="add_and_put_dialog">
-      <add-campus-dialog :visible.sync="add_and_put_dialog" :row="select_row" :dialog-type="add_and_put_dialog_type" @reload="getList"/>
+      <add-campus-dialog :visible.sync="add_and_put_dialog" :row="select_row" :dialog-type="add_and_put_dialog_type" @reload="getList" />
     </div>
-
   </div>
 </template>
 

@@ -1,18 +1,18 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>
-    <sidebar class="sidebar-container"/>
+    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+    <sidebar class="sidebar-container" />
     <div class="main-container">
-      <navbar/>
+      <navbar />
       <!-- <tags-view/> -->
-      <app-main/>
-      <app-footer/>
+      <app-main />
+      <app-footer />
     </div>
   </div>
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain, TagsView, AppFooter } from './components'
+import { Navbar, Sidebar, AppMain, AppFooter } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
@@ -21,7 +21,6 @@ export default {
     Navbar,
     Sidebar,
     AppMain,
-    TagsView,
     AppFooter
   },
   mixins: [ResizeMixin],

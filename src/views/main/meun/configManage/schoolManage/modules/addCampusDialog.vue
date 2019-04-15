@@ -1,32 +1,38 @@
 <template>
   <el-dialog v-dialog-drag :visible.sync="visible" :close-on-click-modal="false" :title="title" :before-close="closeDialog" width="600px">
-    <el-form v-loading="dialogLoading" ref="form" :model="form" :rules="form_rules" class="form" element-loading-text="模版加载中..." label-width="100px">
+    <el-form ref="form" v-loading="dialogLoading" :model="form" :rules="form_rules" class="form" element-loading-text="模版加载中..." label-width="100px">
       <el-form-item class="yz-block" label="缩略图" prop="thumbnail">
-        <yz-upload-avatar :path.sync="avatar.imageUrl" :upload-url="avatar.uploadUrl" :on-success="changeAvatarSuccess" file-size="20MB" width="140px" height="140px" style="margin-left: 0;"/>
+        <yz-upload-avatar :path.sync="avatar.imageUrl" :upload-url="avatar.uploadUrl" :on-success="changeAvatarSuccess" file-size="20MB" width="140px" height="140px" style="margin-left: 0;" />
       </el-form-item>
       <el-form-item class="yz-inline" label="学校名称" prop="name">
-        <el-input v-model="form.name" class="single-border"/>
+        <el-input v-model="form.name" class="single-border" />
       </el-form-item>
       <el-form-item class="yz-inline" label="学校code" prop="code">
-        <el-input v-model="form.code" class="single-border"/>
+        <el-input v-model="form.code" class="single-border" />
       </el-form-item>
       <el-form-item class="yz-inline" label="学校邮箱" prop="email">
-        <el-input v-model="form.email" class="single-border"/>
+        <el-input v-model="form.email" class="single-border" />
       </el-form-item>
       <el-form-item class="yz-inline" label="联系方式" prop="contact">
-        <el-input v-model="form.contact" class="single-border"/>
+        <el-input v-model="form.contact" class="single-border" />
       </el-form-item>
       <el-form-item class="yz-block" label="学段选择" prop="stages">
         <el-checkbox-group v-model="form.stages">
-          <el-checkbox v-for="stage in stageOption" :label="stage.value" :key="stage.value">{{ stage.label }}</el-checkbox>
+          <el-checkbox v-for="stage in stageOption" :key="stage.value" :label="stage.value">
+            {{ stage.label }}
+          </el-checkbox>
         </el-checkbox-group>
       </el-form-item>
       <el-form-item class="yz-block" label="简介" prop="description">
-        <el-input v-model="form.description" type="textarea" class="single-border" rows="3"/>
+        <el-input v-model="form.description" type="textarea" class="single-border" rows="3" />
       </el-form-item>
       <el-form-item class="yz-block">
-        <el-button type="default" size="small" @click="closeDialog()">取消</el-button>
-        <el-button type="primary" size="small" @click="toSubmit()">确定</el-button>
+        <el-button type="default" size="small" @click="closeDialog()">
+          取消
+        </el-button>
+        <el-button type="primary" size="small" @click="toSubmit()">
+          确定
+        </el-button>
       </el-form-item>
     </el-form>
   </el-dialog>

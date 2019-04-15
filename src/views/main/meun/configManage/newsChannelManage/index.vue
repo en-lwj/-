@@ -10,14 +10,15 @@
           </div>
           <div class="yz-panel-body premission-tree">
             <el-tree
-              v-loading="treeLoading"
               ref="tree"
+              v-loading="treeLoading"
               :data="treeData"
               :default-expand-all="true"
               :expand-on-click-node="false"
               :highlight-current="true"
               node-key="id"
-              @node-click="selectRowChange">
+              @node-click="selectRowChange"
+            >
               <span slot-scope="{ node, data }" class="custom-tree-node">
                 <span>{{ data.name }}</span>
               </span>
@@ -32,7 +33,9 @@
               <span class="yz-panel-title">栏目：{{ currentTreeNode && currentTreeNode.data.name || '' }}</span>
             </div>
             <el-row class="yz-panel-header-right">
-              <el-button type= "primary" size="mini" @click="showAddDialog()">新增</el-button>
+              <el-button type="primary" size="mini" @click="showAddDialog()">
+                新增
+              </el-button>
             </el-row>
           </div>
           <div class="yz-panel-body">
@@ -41,11 +44,12 @@
               :data="tableData"
               :max-height="tableMaxHeight"
               size="small"
-              border>
-              <el-table-column label="序号" align="center" type="index" width="65"/>
+              border
+            >
+              <el-table-column label="序号" align="center" type="index" width="65" />
               <el-table-column label="栏目图标" min-width="100px" align="center">
                 <template slot-scope="scope">
-                  <yz-img :src="scope.row.thumbnail" :key="Math.random()+Date.now()" style="width: 70px; height: auto; max-height: 200px"/>
+                  <yz-img :key="Math.random()+Date.now()" :src="scope.row.thumbnail" style="width: 70px; height: auto; max-height: 200px" />
                 </template>
               </el-table-column>
               <el-table-column label="栏目名称" class-name="status-col" min-width="120">
@@ -61,8 +65,12 @@
               <el-table-column label="操作" fixed="right" align="center" min-width="180" class-name="small-padding fixed-width">
                 <template slot-scope="scope">
                   <!-- <el-button class="filter-item" style="margin-left: 10px;" size="mini" type="primary" icon="el-icon-plus" @click="showNewNewsChannelDialog(scope.row)">添加</el-button> -->
-                  <el-button size="mini" type="warning" @click="showEditDialog(scope.row)">修改</el-button>
-                  <el-button size="mini" type="danger" @click="deleteRow(scope.$index, scope.row)">删除</el-button>
+                  <el-button size="mini" type="warning" @click="showEditDialog(scope.row)">
+                    修改
+                  </el-button>
+                  <el-button size="mini" type="danger" @click="deleteRow(scope.$index, scope.row)">
+                    删除
+                  </el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -72,7 +80,7 @@
     </el-container>
     <!-- 新增/修改弹窗 -->
     <div v-if="add_newsChannel_dialog">
-      <add-news-channel-dialog :visible.sync="add_newsChannel_dialog" :parent-data="currentTreeNode.data" :dialog-type="dialogType" :row.sync="currentTableRow" :parent-node="currentTreeNode" @getNewsTemplateAll="getNewsTemplateAll" @reload="getNewsChannelTree"/>
+      <add-news-channel-dialog :visible.sync="add_newsChannel_dialog" :parent-data="currentTreeNode.data" :dialog-type="dialogType" :row.sync="currentTableRow" :parent-node="currentTreeNode" @getNewsTemplateAll="getNewsTemplateAll" @reload="getNewsChannelTree" />
     </div>
   </section>
 </template>

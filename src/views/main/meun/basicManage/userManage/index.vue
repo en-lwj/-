@@ -4,7 +4,7 @@
       <div class="filter-container-header">
         <el-button class="filter-item search-list-btn" size="small" @click="searchListClose = !searchListClose">
           <span>筛选条件</span>
-          <i :class="searchListClose ? 'el-icon-caret-top' : 'el-icon-caret-bottom'"/>
+          <i :class="searchListClose ? 'el-icon-caret-top' : 'el-icon-caret-bottom'" />
         </el-button>
       </div>
       <div :class="searchListClose ? 'close' : ''" class="filter-container-body">
@@ -12,19 +12,23 @@
           <!-- 条件筛选 -->
           <el-form ref="form" :model="listQuery" label-width="100px" size="mini">
             <el-form-item class="yz-inline" label="用户名：" prop="name">
-              <el-input v-model="listQuery.username" class="single-border"/>
+              <el-input v-model="listQuery.username" class="single-border" />
             </el-form-item>
             <el-form-item class="yz-inline" label="姓名：" prop="name">
-              <el-input v-model="listQuery.realName" class="single-border"/>
+              <el-input v-model="listQuery.realName" class="single-border" />
             </el-form-item>
             <el-form-item class="yz-block" label="状态：" prop="status">
               <el-radio-group v-model="listQuery.status">
-                <el-radio v-for="item in statusOptions" :key="item.value" :label="item.value">{{ item.label }}</el-radio>
+                <el-radio v-for="item in statusOptions" :key="item.value" :label="item.value">
+                  {{ item.label }}
+                </el-radio>
               </el-radio-group>
             </el-form-item>
           </el-form>
           <el-row class="yz-center">
-            <el-button v-waves class="filter-item" size="small" type="primary" @click="getList">确认</el-button>
+            <el-button v-waves class="filter-item" size="small" type="primary" @click="getList">
+              确认
+            </el-button>
           </el-row>
         </el-row>
       </div>
@@ -37,8 +41,12 @@
           <span class="yz-panel-title">用户</span>
         </div>
         <el-row class="yz-panel-header-right">
-          <el-button class="filter-item" type="primary" icon="el-icon-plus" size="mini" @click="showAddUserDialog()">新增</el-button>
-          <el-button type="primary" size="mini" icon="el-icon-edit" @click="showChangePwdDialog()">修改密码</el-button>
+          <el-button class="filter-item" type="primary" icon="el-icon-plus" size="mini" @click="showAddUserDialog()">
+            新增
+          </el-button>
+          <el-button type="primary" size="mini" icon="el-icon-edit" @click="showChangePwdDialog()">
+            修改密码
+          </el-button>
         </el-row>
       </div>
       <div class="yz-panel-body">
@@ -46,8 +54,9 @@
           v-loading="listLoading"
           :max-height="tableMaxHeight"
           :data="list"
-          border>
-          <el-table-column :index="indexMethod" label="序号" align="center" type="index" width="55"/>
+          border
+        >
+          <el-table-column :index="indexMethod" label="序号" align="center" type="index" width="55" />
           <el-table-column label="用户名" min-width="150px" align="center">
             <template slot-scope="scope">
               <span>{{ scope.row.username }}</span>
@@ -81,33 +90,38 @@
           </el-table-column>
           <el-table-column label="状态" class-name="status-col" width="100" align="center">
             <template slot-scope="scope">
-              <el-tag :type="scope.row.status | statusTypeFilter">{{ scope.row.status | statusFilter }}</el-tag>
+              <el-tag :type="scope.row.status | statusTypeFilter">
+                {{ scope.row.status | statusFilter }}
+              </el-tag>
             </template>
           </el-table-column>
           <el-table-column label="操作" fixed="right" align="center" width="200" class-name="small-padding">
             <template slot-scope="scope">
-              <el-button size="mini" type="warning" @click="showEditUserDialog(scope.row)">修改用户</el-button>
-              <el-button size="mini" type="danger" @click="deleteRow(scope.$index, scope.row)">删除</el-button>
+              <el-button size="mini" type="warning" @click="showEditUserDialog(scope.row)">
+                修改用户
+              </el-button>
+              <el-button size="mini" type="danger" @click="deleteRow(scope.$index, scope.row)">
+                删除
+              </el-button>
             </template>
           </el-table-column>
         </el-table>
         <!-- 分页 -->
         <div class="pagination-container">
-          <el-pagination :current-page="pager.pageNum" :page-sizes="[10,20,30, 50]" :page-size="pager.pageSize" :total="total" background layout="total, sizes, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange"/>
+          <el-pagination :current-page="pager.pageNum" :page-sizes="[10,20,30, 50]" :page-size="pager.pageSize" :total="total" background layout="total, sizes, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
         </div>
       </div>
     </div>
 
     <!-- 修改密码弹窗 -->
     <div v-if="update_pwd_dialog">
-      <update-pwd-dialog :visible.sync="update_pwd_dialog" @reload="getList"/>
+      <update-pwd-dialog :visible.sync="update_pwd_dialog" @reload="getList" />
     </div>
 
     <!-- 新增和修改用户弹窗 -->
     <div v-if="add_or_put_dialog">
-      <add-user-dialog :visible.sync="add_or_put_dialog" :row.sync="select_row" :dialog-type="add_or_put_dialog_type" @reload="getList"/>
+      <add-user-dialog :visible.sync="add_or_put_dialog" :row.sync="select_row" :dialog-type="add_or_put_dialog_type" @reload="getList" />
     </div>
-
   </div>
 </template>
 

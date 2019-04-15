@@ -4,10 +4,10 @@
     <div class="filter-container">
       <el-form ref="form" :model="listQuery" label-width="80px" size="mini">
         <el-form-item class="yz-inline" label="用户名：" prop="name" style="width: 200px">
-          <el-input v-model="listQuery.username" class="single-border"/>
+          <el-input v-model="listQuery.username" class="single-border" />
         </el-form-item>
         <el-form-item class="yz-inline" label="姓名：" prop="name" style="width: 180px">
-          <el-input v-model="listQuery.realName" class="single-border"/>
+          <el-input v-model="listQuery.realName" class="single-border" />
         </el-form-item>
         <span style="margin-left: 10px;">
           <el-button v-waves type="primary" size="mini" icon="el-icon-search" @click="getList">搜索</el-button>
@@ -16,26 +16,26 @@
             <span>保存</span>
           </el-button>
         </span>
-
       </el-form>
-
     </div>
     <div style="height:300px;">
       <el-table
-        v-loading="listLoading"
         ref="userList"
+        v-loading="listLoading"
         :data="list"
         border
         size="mini"
         max-height="300"
         @select-all="handleSelectionChange"
-        @select="handleSelectionChange">
-        <el-table-column :index="indexMethod" label="序号" align="center" type="index" width="50"/>
+        @select="handleSelectionChange"
+      >
+        <el-table-column :index="indexMethod" label="序号" align="center" type="index" width="50" />
         <el-table-column
           type="selection"
           size="medium"
           align="center"
-          width="50"/>
+          width="50"
+        />
         <el-table-column label="用户名" min-width="150px" align="center">
           <template slot-scope="scope">
             <span>{{ scope.row.username }}</span>
@@ -48,7 +48,9 @@
         </el-table-column>
         <el-table-column label="状态" class-name="status-col" width="100">
           <template slot-scope="scope">
-            <el-tag :type="scope.row.status | statusTypeFilter">{{ scope.row.status | statusFilter }}</el-tag>
+            <el-tag :type="scope.row.status | statusTypeFilter">
+              {{ scope.row.status | statusFilter }}
+            </el-tag>
           </template>
         </el-table-column>
       </el-table>
@@ -57,7 +59,11 @@
     <!-- 分页 -->
     <div class="pagination-container">
       <el-pagination :current-page="pager.pageNum" :page-sizes="[10,20,30, 50]" :page-size="pager.pageSize" :total="total" background layout="total, sizes, prev, slot, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange">
-        <ul class="el-pager"><li class="number active">{{ pager.pageNum }}</li></ul>
+        <ul class="el-pager">
+          <li class="number active">
+            {{ pager.pageNum }}
+          </li>
+        </ul>
       </el-pagination>
     </div>
 

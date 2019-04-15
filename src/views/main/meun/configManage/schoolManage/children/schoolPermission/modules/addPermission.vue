@@ -7,18 +7,22 @@
         <!-- <el-input v-model="parentPermissionName" class="single-border" disabled type="text"/> -->
       </el-form-item>
       <el-form-item class="yz-block" label="权限名称：" prop="permissionName">
-        <el-input v-model="form.permissionName" class="single-border" type="text"/>
+        <el-input v-model="form.permissionName" class="single-border" type="text" />
       </el-form-item>
       <el-form-item class="yz-block" label="权限码code：" prop="code">
-        <el-input v-model="form.code" class="single-border" type="text"/>
+        <el-input v-model="form.code" class="single-border" type="text" />
       </el-form-item>
       <el-form-item class="yz-block" label="links：" prop="links">
-        <el-input v-model="form.links" class="single-border" type="text"/>
+        <el-input v-model="form.links" class="single-border" type="text" />
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="closeDialog()">取消</el-button>
-      <el-button type="primary" @click="toSubmit">确定</el-button>
+      <el-button @click="closeDialog()">
+        取消
+      </el-button>
+      <el-button type="primary" @click="toSubmit">
+        确定
+      </el-button>
     </div>
   </el-dialog>
 </template>

@@ -6,10 +6,18 @@
           <span class="yz-panel-title">基本信息</span>
         </div>
         <el-row class="yz-panel-header-right">
-          <el-button type="warning">基础设置</el-button>
-          <el-button type="primary">校园设置</el-button>
-          <el-button type="primary">公众号</el-button>
-          <el-button type="primary">钉钉</el-button>
+          <el-button type="warning">
+            基础设置
+          </el-button>
+          <el-button type="primary">
+            校园设置
+          </el-button>
+          <el-button type="primary">
+            公众号
+          </el-button>
+          <el-button type="primary">
+            钉钉
+          </el-button>
         </el-row>
       </div>
       <div class="yz-panel-body">

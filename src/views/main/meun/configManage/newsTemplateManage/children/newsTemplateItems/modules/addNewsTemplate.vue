@@ -3,19 +3,21 @@
   <el-dialog v-dialog-drag :visible.sync="visible" :close-on-click-modal="false" :before-close="closeDialog" :title="dialogTitle" width="600px">
     <el-form ref="form" :rules="form_rules" :model="form" label-position="right" label-width="115px">
       <el-form-item class="yz-block" label="属性名称：" prop="label">
-        <el-input v-model="form.label" class="single-border" type="text"/>
+        <el-input v-model="form.label" class="single-border" type="text" />
       </el-form-item>
       <el-form-item class="yz-block" label="字段名称：" prop="field">
-        <el-input v-model="form.field" class="single-border" type="text"/>
+        <el-input v-model="form.field" class="single-border" type="text" />
       </el-form-item>
       <el-form-item class="yz-block" label="类型：" prop="inputType">
         <el-radio-group v-model="form.inputType">
-          <el-radio v-for="item in inputTypeOption" :key="item.value" :label="item.value">{{ item.label }}</el-radio>
+          <el-radio v-for="item in inputTypeOption" :key="item.value" :label="item.value">
+            {{ item.label }}
+          </el-radio>
         </el-radio-group>
       </el-form-item>
       <!-- 输入框 -->
       <el-form-item v-if="form.inputType === 1" class="yz-block" label="默认值：" prop="defValue">
-        <el-input v-model="form.defValue" class="single-border" type="text"/>
+        <el-input v-model="form.defValue" class="single-border" type="text" />
       </el-form-item>
       <!-- 下拉框 -->
       <el-form-item v-if="form.inputType === 2" class="yz-block optValue" label="多选选项：" prop="optValue">
@@ -25,7 +27,8 @@
           :disable-transitions="true"
           closable
           size="medium"
-          @close="handleClose(tag)">
+          @close="handleClose(tag)"
+        >
           {{ tag }}
         </el-tag>
         <el-input
@@ -37,16 +40,18 @@
           @keyup.enter.native="handleInputConfirm"
           @blur="handleInputConfirm"
         />
-        <el-button v-else class="button-new-tag" icon="el-icon-plus" size="small" @click="showInput">新增选项</el-button>
+        <el-button v-else class="button-new-tag" icon="el-icon-plus" size="small" @click="showInput">
+          新增选项
+        </el-button>
       </el-form-item>
       <el-form-item v-if="form.inputType === 2" class="yz-block" label="默认值：" prop="defValue2">
         <el-select v-model="form.defValue" placeholder="请选择" class="single-border">
-          <el-option v-for="tag in form.optValue" :key="tag" :label="tag" :value="tag"/>
+          <el-option v-for="tag in form.optValue" :key="tag" :label="tag" :value="tag" />
         </el-select>
       </el-form-item>
       <!-- 文本框 -->
       <el-form-item v-if="form.inputType === 3" class="yz-block" label="默认值：" prop="defValue">
-        <el-input v-model="form.defValue" class="single-border" type="textarea" rows="3"/>
+        <el-input v-model="form.defValue" class="single-border" type="textarea" rows="3" />
       </el-form-item>
       <!-- 富文本编辑器 -->
       <el-form-item v-if="form.inputType === 4" class="yz-block" label="默认值：" prop="defValue">
@@ -54,8 +59,12 @@
       </el-form-item>
       <el-form-item class="yz-inline" label="是否必填：" prop="isRequired">
         <el-radio-group v-model="form.isRequired">
-          <el-radio :label="true">是</el-radio>
-          <el-radio :label="false">否</el-radio>
+          <el-radio :label="true">
+            是
+          </el-radio>
+          <el-radio :label="false">
+            否
+          </el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item class="yz-block" label="最大长度：" prop="textSize">
@@ -63,8 +72,12 @@
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="closeDialog()">取消</el-button>
-      <el-button type="primary" @click="toSubmit">确定</el-button>
+      <el-button @click="closeDialog()">
+        取消
+      </el-button>
+      <el-button type="primary" @click="toSubmit">
+        确定
+      </el-button>
     </div>
   </el-dialog>
 </template>

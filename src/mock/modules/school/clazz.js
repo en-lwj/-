@@ -145,7 +145,7 @@ export default {
     const data = config.body
     data.id = parseInt(1000 + i)
     data.division = Number(data.division)
-    data.stage = data.stage
+    data.stage = data.stage || undefined
     List.unshift(data)
     return {
       status: 200,

@@ -3,20 +3,26 @@
   <el-dialog v-dialog-drag :visible.sync="visible" :close-on-click-modal="false" :before-close="closeDialog" :title="dialogTitle" width="500px">
     <el-form ref="form" :rules="form_rules" :model="form" label-position="right" label-width="115px">
       <el-form-item class="yz-block" label="模版名称：" prop="name">
-        <el-input v-model="form.name" class="single-border" type="text"/>
+        <el-input v-model="form.name" class="single-border" type="text" />
       </el-form-item>
       <el-form-item class="yz-inline" label="状态：" prop="status">
         <el-radio-group v-model="form.status">
-          <el-radio v-for="item in statusOption" :key="item.value" :label="item.value">{{ item.label }}</el-radio>
+          <el-radio v-for="item in statusOption" :key="item.value" :label="item.value">
+            {{ item.label }}
+          </el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item class="yz-block" label="简介：" prop="description">
-        <el-input v-model="form.description" class="single-border" type="textarea" rows="3"/>
+        <el-input v-model="form.description" class="single-border" type="textarea" rows="3" />
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="closeDialog()">取消</el-button>
-      <el-button type="primary" @click="toSubmit">确定</el-button>
+      <el-button @click="closeDialog()">
+        取消
+      </el-button>
+      <el-button type="primary" @click="toSubmit">
+        确定
+      </el-button>
     </div>
   </el-dialog>
 </template>

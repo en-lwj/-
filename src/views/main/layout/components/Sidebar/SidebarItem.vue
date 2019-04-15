@@ -1,6 +1,5 @@
 <template>
   <div v-if="!item.hidden&&item.children" class="menu-wrapper">
-
     <template v-if="hasOneShowingChild(item.children) && !onlyOneChild.children&&!item.alwaysShow">
       <a :href="onlyOneChild.path" target="_blank" @click="clickLink(onlyOneChild.path,$event)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
@@ -14,12 +13,12 @@
         <item v-if="item.meta" :icon="item.meta.icon" :title="generateTitle(item.meta.title)" />
       </template>
 
-      <template v-for="child in item.children" >
-        <span v-if="child.hidden" :key="child.path"/>
+      <template v-for="child in item.children">
+        <span v-if="child.hidden" :key="child.path" />
         <div v-else :key="child.path">
-          <sidebar-item v-if="child.children&&child.children.length>0&&child.children.every(item => !item.hidden)" :is-nest="true" :item="child" :key="child.path" :base-path="resolvePath(child.path)" class="nest-menu"/>
+          <sidebar-item v-if="child.children&&child.children.length>0&&child.children.every(item => !item.hidden)" :key="child.path" :is-nest="true" :item="child" :base-path="resolvePath(child.path)" class="nest-menu" />
 
-          <a v-else :href="child.path" :key="child.name" target="_blank" @click="clickLink(child.path,$event)">
+          <a v-else :key="child.name" :href="child.path" target="_blank" @click="clickLink(child.path,$event)">
             <el-menu-item :index="resolvePath(child.path)">
               <item v-if="child.meta" :icon="child.meta.icon" :title="generateTitle(child.meta.title)" />
             </el-menu-item>
@@ -27,7 +26,6 @@
         </div>
       </template>
     </el-submenu>
-
   </div>
 </template>
 

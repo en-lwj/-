@@ -30,7 +30,7 @@ import './components'
 // 模拟后台返回数据
 if (process.env.NODE_ENV === 'development') {
   window.Vue = Vue
-  // require('./mock')
+  require('./mock')
 }
 
 Vue.use(Element, {

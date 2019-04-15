@@ -7,10 +7,7 @@ import router from '@/router'
 
 // create an axios instance
 const service = axios.create({
-  // baseURL: 'https://metis.shadowedu.net/metis-educational', // api的base_url
-  // baseURL: 'http://192.168.1.139:8040/metis-educational', // 文锋
-  // baseURL: 'http://192.168.1.148:8021/metis-news', // 伟涛
-  baseURL: process.env.BASE_API,
+  baseURL: process.env.VUE_APP_BASE_API,
   timeout: 10000
 })
 

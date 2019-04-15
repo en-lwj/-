@@ -4,7 +4,7 @@
       <div class="filter-container-header">
         <el-button class="filter-item search-list-btn" size="small" @click="searchListClose = !searchListClose">
           <span>筛选条件</span>
-          <i :class="searchListClose ? 'el-icon-caret-top' : 'el-icon-caret-bottom'"/>
+          <i :class="searchListClose ? 'el-icon-caret-top' : 'el-icon-caret-bottom'" />
         </el-button>
       </div>
       <div :class="searchListClose ? 'close' : ''" class="filter-container-body">
@@ -12,16 +12,20 @@
           <!-- 条件筛选 -->
           <el-form ref="form" :model="listQuery" label-width="100px" size="mini">
             <el-form-item class="yz-inline" label="角色名：" prop="name">
-              <el-input v-model="listQuery.roleName" class="single-border"/>
+              <el-input v-model="listQuery.roleName" class="single-border" />
             </el-form-item>
             <el-form-item class="yz-block" label="状态：" prop="status">
               <el-radio-group v-model="listQuery.status">
-                <el-radio v-for="item in statusOptions" :key="item.value" :label="item.value">{{ item.label }}</el-radio>
+                <el-radio v-for="item in statusOptions" :key="item.value" :label="item.value">
+                  {{ item.label }}
+                </el-radio>
               </el-radio-group>
             </el-form-item>
           </el-form>
           <el-row class="yz-center">
-            <el-button v-waves class="filter-item" size="small" type="primary" @click="getList">确认</el-button>
+            <el-button v-waves class="filter-item" size="small" type="primary" @click="getList">
+              确认
+            </el-button>
           </el-row>
         </el-row>
       </div>
@@ -34,7 +38,9 @@
           <span class="yz-panel-title">角色列表</span>
         </div>
         <el-row class="yz-panel-header-right">
-          <el-button class="filter-item" type="primary" icon="el-icon-plus" size="mini" @click="showAddRoleDialog()">新增</el-button>
+          <el-button class="filter-item" type="primary" icon="el-icon-plus" size="mini" @click="showAddRoleDialog()">
+            新增
+          </el-button>
         </el-row>
       </div>
       <div class="yz-panel-body">
@@ -42,8 +48,9 @@
           v-loading="listLoading"
           :max-height="tableMaxHeight"
           :data="list"
-          border>
-          <el-table-column :index="indexMethod" label="序号" align="center" type="index" width="65"/>
+          border
+        >
+          <el-table-column :index="indexMethod" label="序号" align="center" type="index" width="65" />
           <el-table-column label="角色名" min-width="200px" align="center">
             <template slot-scope="scope">
               <span>{{ scope.row.roleName }}</span>
@@ -51,38 +58,48 @@
           </el-table-column>
           <el-table-column label="状态" class-name="status-col" min-width="100">
             <template slot-scope="scope">
-              <el-tag :type="scope.row.status | statusTypeFilter">{{ scope.row.status | statusFilter }}</el-tag>
+              <el-tag :type="scope.row.status | statusTypeFilter">
+                {{ scope.row.status | statusFilter }}
+              </el-tag>
             </template>
           </el-table-column>
           <el-table-column label="操作" fixed="right" align="center" width="350" class-name="small-padding fixed-width">
             <template slot-scope="scope">
-              <el-button type="primary" size="mini" @click="showAssignPermissionDialog(scope.row)">赋予权限</el-button>
-              <el-button type="primary" size="mini" @click="showAssignRolseDialog(scope.row)">分派角色</el-button>
-              <el-button size="mini" type="warning" @click="showEditRoleDialog(scope.row)">修改</el-button>
-              <el-button size="mini" type="danger" @click="deleteRow(scope.$index, scope.row)">删除</el-button>
+              <el-button type="primary" size="mini" @click="showAssignPermissionDialog(scope.row)">
+                赋予权限
+              </el-button>
+              <el-button type="primary" size="mini" @click="showAssignRolseDialog(scope.row)">
+                分派角色
+              </el-button>
+              <el-button size="mini" type="warning" @click="showEditRoleDialog(scope.row)">
+                修改
+              </el-button>
+              <el-button size="mini" type="danger" @click="deleteRow(scope.$index, scope.row)">
+                删除
+              </el-button>
             </template>
           </el-table-column>
         </el-table>
         <!-- 分页 -->
         <div class="pagination-container">
-          <el-pagination :current-page="pager.pageNum" :page-sizes="[10,20,30, 50]" :page-size="pager.pageSize" :total="total" background layout="total, sizes, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange"/>
+          <el-pagination :current-page="pager.pageNum" :page-sizes="[10,20,30, 50]" :page-size="pager.pageSize" :total="total" background layout="total, sizes, prev, pager, next, jumper" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
         </div>
       </div>
     </div>
 
     <!-- 新增和修改用户弹窗 -->
     <div v-if="add_or_put_dialog">
-      <add-role-dialog :visible.sync="add_or_put_dialog" :row.sync="select_row" :dialog-type="add_or_put_dialog_type" @reload="getList"/>
+      <add-role-dialog :visible.sync="add_or_put_dialog" :row.sync="select_row" :dialog-type="add_or_put_dialog_type" @reload="getList" />
     </div>
 
     <!-- 分配角色弹窗 -->
     <div v-if="assign_role_dialog">
-      <assign-role-dialog :visible.sync="assign_role_dialog" :row.sync="select_row" @reload="getList"/>
+      <assign-role-dialog :visible.sync="assign_role_dialog" :row.sync="select_row" @reload="getList" />
     </div>
 
     <!-- 分配权限弹窗 -->
     <div v-if="assign_permission_dialog">
-      <assign-permission-dialog :visible.sync="assign_permission_dialog" :row.sync="select_row" @reload="getList"/>
+      <assign-permission-dialog :visible.sync="assign_permission_dialog" :row.sync="select_row" @reload="getList" />
     </div>
   </div>
 </template>

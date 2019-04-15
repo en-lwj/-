@@ -3,18 +3,22 @@
   <el-dialog v-dialog-drag :visible.sync="visible" :close-on-click-modal="false" :before-close="closeDialog" :title="dialogTitle" width="450px">
     <el-form ref="form" :rules="form_rules" :model="form" label-position="left" label-width="90px" style="width: 300px; margin-left:50px;">
       <el-form-item class="yz-block" label="旧密码" prop="oldPassword">
-        <el-input v-model="form.oldPassword" type="password" class="single-border" auto-complete="off"/>
+        <el-input v-model="form.oldPassword" type="password" class="single-border" auto-complete="off" />
       </el-form-item>
       <el-form-item class="yz-block" label="新密码" prop="password">
-        <el-input v-model="form.password" type="password" class="single-border" auto-complete="off"/>
+        <el-input v-model="form.password" type="password" class="single-border" auto-complete="off" />
       </el-form-item>
       <el-form-item class="yz-block" label="确认密码" prop="password2">
-        <el-input v-model="form.password2" type="password" class="single-border" auto-complete="off"/>
+        <el-input v-model="form.password2" type="password" class="single-border" auto-complete="off" />
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="closeDialog()">取消</el-button>
-      <el-button type="primary" @click="toSubmit()">确定</el-button>
+      <el-button @click="closeDialog()">
+        取消
+      </el-button>
+      <el-button type="primary" @click="toSubmit()">
+        确定
+      </el-button>
     </div>
   </el-dialog>
 </template>

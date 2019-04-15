@@ -9,11 +9,12 @@
     :action="avatar.uploadUrl"
     :style="generatorStyle"
     upload-header
-    class="yz-avatar-uploader">
+    class="yz-avatar-uploader"
+  >
     <div class="yz-avatar-box">
       <yz-img v-if="avatar.imageUrl && !avatar.progressVisible" :src="avatar.imageUrl" class="yz-avatar" />
-      <i v-else-if="!avatar.imageUrl && !avatar.progressVisible" class="el-icon-plus yz-avatar-uploader-icon"/>
-      <el-progress v-if="avatar.progressVisible" :percentage="avatar.uploadPercent" type="circle"/>
+      <i v-else-if="!avatar.imageUrl && !avatar.progressVisible" class="el-icon-plus yz-avatar-uploader-icon" />
+      <el-progress v-if="avatar.progressVisible" :percentage="avatar.uploadPercent" type="circle" />
     </div>
   </el-upload>
 </template>
